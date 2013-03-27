@@ -1,0 +1,5 @@
+www.google.com에서 3d tiger model을 검색해서 2번쩨 링크 입니다: 
+http://thefree3dmodels.com/stuff/animal/tiger/24-1-0-505
+
+다운 받은 .mtl과 .obj 파일을 다음 링크에 있는 도구를 사용하여 C header 파일으로 변화 시겼습니다:
+http://heikobehrens.net/2009/08/27/obj2opengl/
