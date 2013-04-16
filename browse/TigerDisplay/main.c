@@ -51,19 +51,45 @@ void reshape(int width, int height)
     glFrustum(-5.0, 5.0, -5.0, 5.0, 0.5, 20.0); //*/
 }
 
-void processObj(FILE *objFile){
-	
-}
-
 void idle(void)
 {
     glutPostRedisplay();
 }
 
+void processObj(FILE *file){
+
+}
+FILE openFile(char *filename){
+	FILE *file;
+	char *selection;
+
+	file = fopen(FILENAME, "r");
+
+	if (file == NULL){
+		selection = (char*) malloc(sizeof(char));
+		printf("File \"%s\" could not be opened.", FILENAME);
+		fclose(file);
+		printf("Select new file or type 'quit' to exit");
+		gets(selection);
+		if(!strcmp(selection, "quit"))
+			file = openFile(selection); //recursive call to get file name
+		free(selection);
+	}
+	return FILE;
+}
+
 int main(int argc, char** argv)
 {
+	FILE *file;
+	char *stringBuffer;
+
     glutInit(&argc, argv);
+    stringBuffer = (char*) malloc(sizeof(char));
+    file = openFile(FILENAME);
+    if (file == NULL) return 1; //user typed 'quit'
     
+    processObj(file);
+
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowSize(640, 480);
     
